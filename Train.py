@@ -4,14 +4,14 @@ from PIL import Image
 import os
 
 
-path = 'path to directory Data'
+path = './Data'
 
 recognizer = cv2.face.LBPHFaceRecognizer_create()
-detector = cv2.CascadeClassifier("path to haarcascade_frontalface_default.xml")
+detector = cv2.CascadeClassifier("./haarcascade_frontalface_default.xml")
 
 def getImagesandLabels(path):
 
-    imagePaths = [os.path.join(path,f) for f in os.listdir(path)]
+    imagePaths = [os.path.join(path, f) for f in os.listdir(path)]
     faceSamples = []
     ids = []
 
@@ -27,11 +27,11 @@ def getImagesandLabels(path):
             faceSamples.append(img_numpy[y:y+h,x:x+w])
             ids.append(id)
 
-    return faceSamples,ids
+    return faceSamples, ids
 
 print("[INFO] đang training dữ liệu")
 
 faces,ids = getImagesandLabels(path)
 recognizer.train(faces, np.array(ids))
-recognizer.write("path to contain place trainer.yml")
-print("[INFO] Training hoàn tất".format(len(np.unique(ids))))
+recognizer.write("./Model/Model.yml")
+print(f"[INFO] Training hoàn tất {len(np.unique(ids))}")
