@@ -26,7 +26,7 @@ while True:
 
     gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
-    faces = faceCascade.detectMultiScale(gray_frame,scaleFactor=1.2, minNeighbors=5)
+    faces = faceCascade.detectMultiScale(gray_frame, scaleFactor=1.2, minNeighbors=5)
 
     for (x, y, w, h) in faces:
 
